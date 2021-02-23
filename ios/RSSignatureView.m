@@ -210,7 +210,7 @@
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths firstObject];
 	NSString *randomUUIDString = [[NSUUID UUID] UUIDString];
-	NSString *tempPath = [documentsDirectory stringByAppendingFormat:@"/",randomUUIDString,".png"];
+	NSString *tempPath = [documentsDirectory stringByAppendingFormat:@"/%@%@",randomUUIDString,@".png"];
 
 	//remove if file already exists
 	if ([[NSFileManager defaultManager] fileExistsAtPath:tempPath]) {
