@@ -19,6 +19,7 @@
 	BOOL _showBorder;
 	BOOL _showNativeButtons;
 	BOOL _showTitleLabel;
+    NSString *_imageFileName;
 	UIColor *_backgroundColor;
 	UIColor *_strokeColor;
 }
@@ -30,6 +31,7 @@
 {
 	_showBorder = YES;
 	_showNativeButtons = YES;
+    _imageFileName = @"signature2.png";
 	_showTitleLabel = YES;
 	_backgroundColor = UIColor.whiteColor;
 	_strokeColor = UIColor.blackColor;
@@ -193,6 +195,10 @@
 	_strokeColor = strokeColor;
 }
 
+- (void)setImageFileName:(NSString*)fileName {
+    _imageFileName = fileName;
+}
+
 -(void) onSaveButtonPressed {
 	[self saveImage];
 }
@@ -210,7 +216,7 @@
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths firstObject];
 	NSString *randomUUIDString = [[NSUUID UUID] UUIDString];
-	NSString *tempPath = [documentsDirectory stringByAppendingFormat:@"/%@%@",randomUUIDString,@".png"];
+	NSString *tempPath = [documentsDirectory stringByAppendingFormat:@"/%@",_imageFileName];
 
 	//remove if file already exists
 	if ([[NSFileManager defaultManager] fileExistsAtPath:tempPath]) {
