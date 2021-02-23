@@ -35,6 +35,7 @@ public class RSSignatureCaptureMainView extends LinearLayout implements OnClickL
 
   Activity mActivity;
   int mOriginalOrientation;
+  String imageFileName = "signature.png";
   Boolean saveFileInExtStorage = false;
   String viewMode = "portrait";
   Boolean showBorder = true;
@@ -61,6 +62,10 @@ public class RSSignatureCaptureMainView extends LinearLayout implements OnClickL
 
   public RSSignatureCaptureView getSignatureView() {
     return signatureView;
+  }
+
+  public void setImageFileName(String fileName) {
+    this.imageFileName = fileName;
   }
 
   public void setSaveFileInExtStorage(Boolean saveFileInExtStorage) {
@@ -149,11 +154,8 @@ public class RSSignatureCaptureMainView extends LinearLayout implements OnClickL
       myDir.mkdirs();
     }
 
-    // set the file name of your choice
-    String fname = "signature.png";
-
     // in our case, we delete the previous file, you can remove this
-    File file = new File(myDir, fname);
+    File file = new File(myDir, imageFileName);
     if (file.exists()) {
       file.delete();
     }

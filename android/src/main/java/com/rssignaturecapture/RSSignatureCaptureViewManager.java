@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
 
 public class RSSignatureCaptureViewManager extends ViewGroupManager<RSSignatureCaptureMainView> {
 
-	public static final String PROPS_SAVE_IMAGE_FILE="saveImageFileInExtStorage";
+	public static final String PROPS_IMAGE_FILE_NAME="imageFileName";
+    public static final String PROPS_SAVE_IMAGE_FILE="saveImageFileInExtStorage";
 	public static final String PROPS_VIEW_MODE = "viewMode";
 	public static final String PROPS_SHOW_NATIVE_BUTTONS="showNativeButtons";
 	public static final String PROPS_MAX_SIZE="maxSize";
@@ -40,6 +41,14 @@ public class RSSignatureCaptureViewManager extends ViewGroupManager<RSSignatureC
 	public String getName() {
 		return "RSSignatureView";
 	}
+
+    @ReactProp(name = PROPS_IMAGE_FILE_NAME)
+    public void setImageFileName(RSSignatureCaptureMainView view, @Nullable String fileName) {
+        Log.d("setImageFileName:", "" + fileName);
+        if (view != null && fileName != null) {
+            view.setImageFileName(fileName);
+        }
+    }
 
 	@ReactProp(name = PROPS_SAVE_IMAGE_FILE)
 	public void setSaveImageFileInExtStorage(RSSignatureCaptureMainView view, @Nullable Boolean saveFile) {
